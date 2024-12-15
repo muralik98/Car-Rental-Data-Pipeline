@@ -1,0 +1,58 @@
+{
+    "job_id": 715614479145384,
+    "creator_user_name": "muralik0115@gmail.com",
+    "run_as_user_name": "muralik0115@gmail.com",
+    "run_as_owner": true,
+    "settings": {
+      "name": "SCD-Pipeline",
+      "email_notifications": {
+        "no_alert_for_skipped_runs": false
+      },
+      "webhook_notifications": {},
+      "timeout_seconds": 0,
+      "max_concurrent_runs": 1,
+      "tasks": [
+        {
+          "task_key": "travel_booking_data_pipeline",
+          "run_if": "ALL_SUCCESS",
+          "notebook_task": {
+            "notebook_path": "/Workspace/Users/muralik0115@gmail.com/booking_data_processing",
+            "base_parameters": {
+              "current_date": "2024-07-25"
+            },
+            "source": "WORKSPACE"
+          },
+          "existing_cluster_id": "1117-095624-hcxv7ylu",
+          "timeout_seconds": 0,
+          "email_notifications": {
+            "on_start": [
+              "muralik0115@gmail.com"
+            ],
+            "on_success": [
+              "muralik0115@gmail.com"
+            ],
+            "on_failure": [
+              "muralik0115@gmail.com"
+            ]
+          },
+          "notification_settings": {
+            "no_alert_for_skipped_runs": false,
+            "no_alert_for_canceled_runs": false,
+            "alert_on_last_attempt": false
+          },
+          "webhook_notifications": {}
+        }
+      ],
+      "format": "MULTI_TASK",
+      "queue": {
+        "enabled": true
+      },
+      "parameters": [
+        {
+          "name": "current_date",
+          "default": "2024-07-26"
+        }
+      ]
+    },
+    "created_time": 1731962246671
+  }

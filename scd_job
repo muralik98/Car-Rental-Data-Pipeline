@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    SCD_Pipeline:
+      name: SCD-Pipeline
+      tasks:
+        - task_key: travel_booking_data_pipeline
+          notebook_task:
+            notebook_path: /Workspace/Users/muralik0115@gmail.com/booking_data_processing
+            base_parameters:
+              current_date: 2024-07-25
+            source: WORKSPACE
+          existing_cluster_id: 1117-095624-hcxv7ylu
+          email_notifications:
+            on_start:
+              - muralik0115@gmail.com
+            on_success:
+              - muralik0115@gmail.com
+            on_failure:
+              - muralik0115@gmail.com
+      queue:
+        enabled: true
+      parameters:
+        - name: current_date
+          default: 2024-07-26

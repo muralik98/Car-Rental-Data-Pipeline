@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    Zoom_Car_Pipeline:
+      name: Zoom-Car-Pipeline
+      tasks:
+        - task_key: booking_data_loading
+          notebook_task:
+            notebook_path: /Workspace/Users/muralik0115@gmail.com/zoom_bookings
+            base_parameters:
+              current_date: "20241123"
+            source: WORKSPACE
+          existing_cluster_id: 1117-095624-hcxv7ylu
+        - task_key: customer_data_loading
+          depends_on:
+            - task_key: booking_data_loading
+          notebook_task:
+            notebook_path: /Workspace/Users/muralik0115@gmail.com/zoom_customer
+            base_parameters:
+              current_date: "20241123"
+            source: WORKSPACE
+          existing_cluster_id: 1117-095624-hcxv7ylu
+        - task_key: merge_notebook
+          depends_on:
+            - task_key: customer_data_loading
+          notebook_task:
+            notebook_path: /Workspace/Users/muralik0115@gmail.com/merge_zoom
+            source: WORKSPACE
+          existing_cluster_id: 1117-095624-hcxv7ylu
+      queue:
+        enabled: true
